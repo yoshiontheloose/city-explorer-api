@@ -14,6 +14,8 @@ As a user, I want clear messages if something goes wrong so I know if I need to 
 
 ## Getting Started
 
+npm init - creates new project, gives point of entry to app
+
 npm install: express, dotenv, and cors.
 
 Make sure to add .gitignore and .eslintrc.json
@@ -40,10 +42,24 @@ Name of feature: Lab 07 Custom Servers with Node and Express
 
 Estimate of time needed to complete: 2 days
 
-Start time: 7/31
+Start time: 7/31 1/2 hour, 8/4 4 hours
+
+Finish time: 
+
+Actual time needed to complete: _____
+
+![UML](./lab07uml.png)
+
+---
+
+Name of feature: Lab 08 APIs
+
+Estimate of time needed to complete: 10 hours
+
+Start time: _____
 
 Finish time: _____
 
 Actual time needed to complete: _____
 
-![UML](./lab07uml.png)
+![UML](./WRRCLab08.jpg)
