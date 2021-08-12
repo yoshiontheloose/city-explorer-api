@@ -15,33 +15,52 @@ app.use(cors());
 require('dotenv').config();
 const PORT = process.env.PORT;
 
+const axios = require('axios');
+const { response } = require('express');
+
 // <---------------------------->
 
 class Forecast {
-  constructor(date, description) {
-    this.date = date;
-    this.description = description;
+  constructor(weatherData) {
+    console.log(weatherData.weather);
+    this.date = weatherData.datetime;
+    this.description = weatherData.weather.description;
   };
 };
 
-let weatherData = require('./data/weather.json');
-
-
 //listening for the weather route
-app.get('/weather', (request, response) => {
+app.get('/weather', async (request, response) => {
   let lat = request.query.lat
   let lon = request.query.lon
   let searchQuery = request.query.searchQuery
 
-//note: only use lat lon for api call
-  // note: put axios.get call for weather.find
-const findCity = weatherData.find(weather => searchQuery.toLowerCase() === weather.city_name.toLowerCase());
+let findCity = await axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`);
 
-console.log(findCity.data[0].description);
-// note: findcity.data.data.map?
-response.send(findCity.data.map(current => new Forecast(current.datetime, current.weather.description)));
+//findcity.data gets data from api, .data is the name of the data array in api data.
+//then .map runs over the current data to make a new Forecast data object
+response.send(findCity.data.data.map(current => new Forecast(current)));
 });
 
+class Movie {
+  constructor(movie) {
+    // displays movie image, empty string if there is not a movie image
+    this.src = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '';
+    this.title = movie.title
+  }
+}
+
+
+
+//Movie route
+app.get('/movies', async (request, response) => {
+  let query = request.query.query
+  let results = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${query}`);
+  
+  // results.data.results: the movie results we named above, the data from the api, the array of data IN api data is named 'results' 
+  //maps over movie (from constructor) to make our new Movie object from class created above
+  response.send(results.data.results.map(movie => new Movie(movie)));
+
+});
 
 
 // gives the routes server should listen for
