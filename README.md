@@ -36,30 +36,38 @@ Set the contents of .env to set a value for `PORT`. Ensure `.env` is in your `.g
 
 Ayrat Gimranov
 
+Ryan Gallaway
+
+Joe Pennok
+
+JP Jones
+
 ---
 
 Name of feature: Lab 07 Custom Servers with Node and Express
 
 Estimate of time needed to complete: 2 days
 
-Start time: 7/31 1/2 hour, 8/4 4 hours
+Start time: 7/31 1/2 hour, 8/4 4 hours, 8/7 2 1/2 hours
 
-Finish time: 
+Finish time: 8/7
 
-Actual time needed to complete: _____
+Actual time needed to complete: 7 hours
 
 ![UML](./lab07uml.png)
 
 ---
 
-Name of feature: Lab 08 APIs
+Name of feature: Lab 08 APIs.
 
-Estimate of time needed to complete: 10 hours
+Add weather API key, add movies, publish
 
-Start time: _____
+Estimate of time needed to complete: 5 hours
 
-Finish time: _____
+Start time: 8/7
 
-Actual time needed to complete: _____
+Finish time:
+
+Actual time needed to complete:
 
 ![UML](./WRRCLab08.jpg)
